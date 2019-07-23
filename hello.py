@@ -3,13 +3,16 @@ from flask import (
     render_template
 )
 
+import sys
 import connexion
 import connexion_helper
 
 # Create the application instance
 app = connexion.App(__name__, specification_dir='./')
 # Read the swagger.yml file to configure the endpoints
-if not(connexion_helper.load_api_spec(app, 'apispec.yml')):
+spec_file_name = 'apispec.yml'
+if not(connexion_helper.load_api_spec(app, spec_file_name)):
+	print("Unable to load api spec file: " + spec_file_name + ", exiting...")
 	sys.exit()
 
 # Create a URL route in our application for "/"
