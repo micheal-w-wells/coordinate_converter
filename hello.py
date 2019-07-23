@@ -3,8 +3,14 @@ from flask import (
     render_template
 )
 
+import connexion
+import connexion_helper
+
 # Create the application instance
-app = Flask(__name__, template_folder="templates")
+app = connexion.App(__name__, specification_dir='./')
+# Read the swagger.yml file to configure the endpoints
+if not(connexion_helper.load_api_spec(app, 'apispec.yml')):
+	sys.exit()
 
 # Create a URL route in our application for "/"
 @app.route('/')
