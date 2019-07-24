@@ -26,6 +26,16 @@ def home():
     """
     return render_template('home.html')
 
+@app.route('/example')
+def exampleOperation():
+    """
+    This function just responds to the browser ULR
+    localhost:5000/
+
+    :return:        the rendered template 'home.html'
+    """
+    return 200
+
 # If we're running in stand alone mode, run the application
 if __name__ == '__main__':
     app.run(debug=True)

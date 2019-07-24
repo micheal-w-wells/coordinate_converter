@@ -1,29 +1,12 @@
-swagger: '2.0'
+openapi: "3.0.0"
 info:
-  title: Give a name to your app
-  version: "0.1"
-consumes:
-  - application/json
-produces:
-  - application/json
-security:
-  - oauth2: [myscope]
+  title: Simple API overview - sourced from https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/api-with-examples.yaml
+  version: 2.0.0
 paths:
-  /:
+  /example:
     get:
-      operationId: endpoints.root
-      summary: |
-        test
+      summary: doesn't do much
       responses:
-        200:
-          description: success
-        500:
-          description: no good
-securityDefinitions:
-  oauth2:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: https://oauth.example/token_info
-    x-tokenInfoUrl: https://oauth.example/token_info
-    scopes:
-      myscope: Unique identifier of the user accessing the service.
+        '200':
+          description: |-
+            200 response
