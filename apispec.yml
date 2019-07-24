@@ -1,0 +1,29 @@
+swagger: '2.0'
+info:
+  title: Give a name to your app
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+security:
+  - oauth2: [myscope]
+paths:
+  /:
+    get:
+      operationId: endpoints.root
+      summary: |
+        test
+      responses:
+        200:
+          description: success
+        500:
+          description: no good
+securityDefinitions:
+  oauth2:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://oauth.example/token_info
+    x-tokenInfoUrl: https://oauth.example/token_info
+    scopes:
+      myscope: Unique identifier of the user accessing the service.
